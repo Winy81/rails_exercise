@@ -1,0 +1,2 @@
+class StationeriesController < ApplicationController
+end
