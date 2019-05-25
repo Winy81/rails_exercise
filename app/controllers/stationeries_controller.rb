@@ -28,6 +28,7 @@ class StationeriesController < ApplicationController
 	end
 
 	def update
+	  @stationery = Stationery.find(params[:id])
 	  if @stationery.update(stationery_params)
 	  	flash[:success] = "Item has been updated"
 	  	redirect_to stationeries_path(@stationery)

@@ -1,0 +1,19 @@
+<h1>Statinery#edit</h1>
+
+<%= form_for(@stationery) do |f| %>
+
+	<%= f.label :name%>
+	<%= f.text_field :name%>
+
+	<%= f.label :product_code%>
+	<%= f.text_field :product_code%>
+
+	<%= f.label :available%>
+	<%= f.check_box :availability%>
+
+	<%= f.label :consumable%>
+	<%= f.check_box :consumable%>
+
+	<%= f.submit %>
+
+<% end %>
