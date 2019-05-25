@@ -43,13 +43,11 @@ class StationeriesController < ApplicationController
 	  	redirect_to stationeries_path
 	  end
 	end
-	
+
 	private
 
 	def stationery_params
   	  params.require(:stationery).permit(:name,:product_code,:consumable,:availability)
   	end
-
-  end
 
 end
