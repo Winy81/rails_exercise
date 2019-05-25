@@ -1,0 +1,10 @@
+<h1>Statinery index</h1>
+
+<% @stationeries.each do |stationery| %>
+	<ul>
+		<li><%= stationery.id %></li>
+		<li><%= link_to stationery.name, stationery_path(stationery) %></li>
+		<li><%= stationery.product_code %></li>
+		<li><%= stationery.availability %></li>
+	</ul>
+<% end %>
