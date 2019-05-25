@@ -39,8 +39,9 @@ class StationeriesController < ApplicationController
 	end
 
 	def destroy
+	  @stationery = Stationery.find(params[:id])
 	  if @stationery.destroy	
-	  flash[:success] = "Item has been destroyed"
+	  	flash[:success] = "Item has been destroyed"
 	  	redirect_to stationeries_path
 	  end
 	end
