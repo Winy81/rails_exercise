@@ -1,5 +1,7 @@
 <h1>Statinery#index</h1>
 
+<%= link_to "Put new Stationery into the list" , new_stationery_path %>
+
 <% @stationeries.each do |stationery| %>
 	<ul>
 		<li><%= stationery.id %></li>
