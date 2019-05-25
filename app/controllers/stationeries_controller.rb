@@ -4,4 +4,8 @@ class StationeriesController < ApplicationController
 		@stationeries = Stationery.all
 	end
 
+	def show
+		@stationery = Stationery.find(params[:id])
+	end
+
 end
