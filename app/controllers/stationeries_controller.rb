@@ -19,7 +19,7 @@ class StationeriesController < ApplicationController
 	  	redirect_to stationeries_path
 	  else
 	  	flash.now[:danger] = "Item hasn't been created"
-	  	render :new
+	  	redirect_to new_stationery_path
 	  end
 	end
 
@@ -34,7 +34,7 @@ class StationeriesController < ApplicationController
 	  	redirect_to stationeries_path(@stationery)
 	  else
 	  	flash.now[:danger] = "Item hasn't been updated"
-	  	render :edit
+	  	redirect_to edit_stationery_path
 	  end
 	end
 
