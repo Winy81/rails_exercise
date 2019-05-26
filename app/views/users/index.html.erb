@@ -1,5 +1,10 @@
 <h1>User#index</h1>
 
 <% @users.each do |user| %>
-	<%= user.id %>
+  <ul>
+  	<li><%= user.id %></li>
+    <li><%= user.name %></li>
+    <li><%= user.email %></li>
+    <li><%= user.activity %></li>
+  </ul>
 <% end %>
