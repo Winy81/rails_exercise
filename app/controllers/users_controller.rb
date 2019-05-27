@@ -16,4 +16,5 @@ class UsersController < ApplicationController
 		redirect_to stationeries_path, notice: "You are not authiruzed for checking Users"
 	  end
 	end
+
 end

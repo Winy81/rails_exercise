@@ -6,3 +6,10 @@
     <li><%= @user.email %></li>
     <li><%= @user.activity %></li>
   </ul>
+
+<% if logged_in?(:admin) %>
+  <%= link_to "Back For User List", users_path %></br>
+  <%= link_to "Back For Item List", stationeries_path %></br>
+<% else %>
+  <%= link_to "Back For Item List", stationeries_path %>
+<% end %>
