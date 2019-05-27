@@ -13,11 +13,6 @@
     <%= f.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= f.label :activity %><br />
-    <%= f.check_box :activity %>
-  </div>
-
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
