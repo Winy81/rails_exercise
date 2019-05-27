@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   
-  has_many :stationery
+  has_many :stationery, dependent: :destroy
 
   ############################################################################################
   ## PeterGate Roles                                                                        ##

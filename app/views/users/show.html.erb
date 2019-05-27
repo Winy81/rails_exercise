@@ -8,6 +8,7 @@
   </ul>
 
 <% if logged_in?(:admin) %>
+  <%= link_to "Edit user", edit_user_path(@user) %>
   <%= link_to "Back For User List", users_path %></br>
   <%= link_to "Back For Item List", stationeries_path %></br>
 <% else %>
