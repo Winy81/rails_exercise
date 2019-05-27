@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
-	def index 
+	def index
+	  if logged_in?(:admin)
 		@users = User.all
+	  else
+		redirect_to stationeries_path, notice: "You are not authiruzed for listing Users"
+	  end
 	end
 
 	def show
