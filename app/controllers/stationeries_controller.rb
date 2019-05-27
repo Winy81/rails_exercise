@@ -13,13 +13,18 @@ class StationeriesController < ApplicationController
 	end
 
 	def create
-	  @stationery = Stationery.new(stationery_params)
-	  if @stationery.save
-	  	flash[:success] = "Item has been added"
-	  	redirect_to stationeries_path
+		if logged_in?(:admin)
+	  		@stationery = current_user.stationery.create(stationery_params)
+	  			if @stationery.save
+	  				flash[:success] = "Item has been added"
+	  				redirect_to stationeries_path
+	  			else
+	  				flash.now[:danger] = "Item hasn't been created"
+	  				render :new
+	  			end
 	  else
-	  	flash.now[:danger] = "Item hasn't been created"
-	  	render :new
+	  	flash.now[:danger] = "You have no permisson to create stationeries"
+	  	redirect_to stationeries_path
 	  end
 	end
 
