@@ -1,7 +1,7 @@
 class StationeriesController < ApplicationController
 
 	def index
-      @stationeries = Stationery.all
+    @stationeries = Stationery.all
 	end
 
 	def show
@@ -54,7 +54,7 @@ class StationeriesController < ApplicationController
 	private
 
 	def stationery_params
-  	  params.require(:stationery).permit(:name,:product_code,:consumable,:availability)
+  	  params.require(:stationery).permit(:name,:product_code,:consumable,:availability,:user_id)
   	end
 
 end

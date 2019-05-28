@@ -1,5 +1,8 @@
 <h1>Statinery#edit</h1>
 
+<h2>Welcome:  <%= current_user.name %></h2>
+<h2>Your user id is:  <%= current_user.id %></h2>
+
 <%= form_for(@stationery) do |f| %>
 
 	<% if @stationery.errors.any? %>
@@ -10,19 +13,44 @@
 		</ul>
 	<% end %>
 
+<% unless logged_in?(:admin) %>
+
 	<%= f.label :name%>
-	<%= f.text_field :name%>
+	<%= f.text_field :name, :readonly => true%>
 
 	<%= f.label :product_code%>
-	<%= f.text_field :product_code%>
+	<%= f.text_field :product_code, :readonly => true%>
 
-	<%= f.label :available%>
-	<%= f.check_box :availability%>
+	<%= f.label "Item will be linked for user with id:"%>
+	<%= f.text_field :user_id, :value => current_user.id, :readonly => true%>
+
+  <%= f.hidden_field :availability, :value => '0' %>
 
 	<%= f.label :consumable%>
-	<%= f.check_box :consumable%>
+	<%= f.check_box :consumable, {:disabled => true}%>
 
-	<%= f.submit %>
+<% end %>
+
+<% if logged_in?(:admin) %>
+
+	<%= f.label :name %>
+	<%= f.text_field :name %>
+
+	<%= f.label :product_code %>
+	<%= f.text_field :product_code %>
+
+	<%= f.label "Item will be returned for the stock"%>
+	<%= f.text_field :user_id, :value => current_user.id %>
+
+	<%= f.label :available %>
+  <%= f.check_box :availability, {checked: true} %>
+
+	<%= f.label :consumable %>
+	<%= f.check_box :consumable %>
+
+<% end %>
+
+	<%= f.submit "Take the item"%>
 
 <% end %>
 </br>
