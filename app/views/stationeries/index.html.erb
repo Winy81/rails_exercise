@@ -1,13 +1,36 @@
 <h1>Statinery#index</h1>
 
-<%= link_to "Put new Stationery into the list" , new_stationery_path %>
+<% unless current_user %>
+  <h2>For the items, please <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> first</h2>
+<% end %>
+
+<% if logged_in?(:admin) %>
+  <%= link_to "Put new Stationery into the list" , new_stationery_path %>
+<% end %>
 </br>
 
 <% @stationeries.each do |stationery| %>
-	<ul>
-		<li><%= stationery.id %></li>
-		<li><%= link_to stationery.name, stationery_path(stationery) %></li>
-		<li><%= stationery.product_code %></li>
-		<li><%= stationery.availability %></li>
-	</ul>
+ <% if logged_in?(:admin) %>
+    <ul>
+       <li><%= stationery.id %></li>
+       <li><%= link_to stationery.name, stationery_path(stationery) %></li>
+       <li><%= stationery.product_code %></li>
+       <li><%= stationery.availability %></li>
+       <li><%= stationery.user.id %></li>
+       <li><%= stationery.user.name %></li>
+     </ul>
+ <% elsif logged_in?(:editor) %>  
+   <% if stationery.availability == true %>
+	   <ul>
+		   <li><%= stationery.id %></li>
+		   <li><%= stationery.name %></li>
+		   <li><%= stationery.product_code %></li>
+       <% if current_user.activity == true %>
+         <li><%= link_to "Take the Item", stationery_path(stationery) %></li>
+       <% else %>
+         <li><p>Your account is locked</p></li>
+       <% end %>
+	   </ul>
+   <% end %>
+ <% end %>
 <% end %>
