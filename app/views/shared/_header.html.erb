@@ -1,0 +1,16 @@
+<h3>App Title</h3>
+
+<div style="float: right">
+<% if user_signed_in? %>
+  <ul>
+    <li><%= link_to current_user.name, user_path(current_user)  %></li>
+    <li><%= current_user.role %></li>
+    <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+  </ul>
+<% else %>
+  <ul>
+    <li><%= link_to "Sign in", new_user_session_path %></li>
+    <li><%= link_to "Sign up", new_user_registration_path %></li>
+  </ul>
+<% end %>
+</div>
