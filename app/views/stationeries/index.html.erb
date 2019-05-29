@@ -17,8 +17,13 @@
        <li><%= stationery.product_code %></li>
        <li><%= stationery.availability %></li>
        <li><%= stationery.user.id %></li>
-       <li><%= stationery.user.name %></li>
+       <li><%= stationery.user.role%></li>
+       <li><%= link_to stationery.user.name, user_path(stationery.user)  %></li>       
      </ul>
+     <% if time_different(stationery.updated_at) >= 0 && !(stationery.user.role.to_s == "admin") %>
+       <h4 style="color:red">This Itme should have been returned into the warehouse already</h4>
+     <% end %>
+     <hr>
  <% elsif logged_in?(:editor) %>  
    <% if stationery.availability == true %>
 	   <ul>
@@ -26,7 +31,7 @@
 		   <li><%= stationery.name %></li>
 		   <li><%= stationery.product_code %></li>
        <% if current_user.activity == true %>
-         <li><%= link_to "Take the Item", stationery_path(stationery) %></li>
+         <li><%= link_to "Take the Item", edit_stationery_path(stationery) %></li>
        <% else %>
          <li><p>Your account is locked</p></li>
        <% end %>
