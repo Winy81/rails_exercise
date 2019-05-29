@@ -1,11 +1,13 @@
 class StationeriesController < ApplicationController
 
+	before_action :set_stationery, only:[:show,:edit,:update,:destroy]
+
 	def index
     @stationeries = Stationery.all
 	end
 
 	def show
-	  @stationery = Stationery.find(params[:id])
+	  
 	end
 
 	def new
@@ -29,11 +31,10 @@ class StationeriesController < ApplicationController
 	end
 
 	def edit
-	  @stationery = Stationery.find(params[:id])
+	  
 	end
 
 	def update
-	  @stationery = Stationery.find(params[:id])
 	  if @stationery.update(stationery_params)
 	  	flash[:success] = "Item has been updated"
 	  	redirect_to stationeries_path(@stationery)
@@ -44,7 +45,6 @@ class StationeriesController < ApplicationController
 	end
 
 	def destroy
-	  @stationery = Stationery.find(params[:id])
 	  if @stationery.destroy	
 	  	flash[:success] = "Item has been destroyed"
 	  	redirect_to stationeries_path
@@ -52,6 +52,10 @@ class StationeriesController < ApplicationController
 	end
 
 	private
+
+	def set_stationery
+		@stationery = Stationery.find(params[:id])
+	end
 
 	def stationery_params
   	  params.require(:stationery).permit(:name,:product_code,:consumable,:availability,:user_id,:cupboard)
