@@ -3,7 +3,7 @@
 <p><%= @stationery.product_code %></p>
 <p><%= @stationery.consumable %></p>
 </br>
-<% if time_different(@stationery.updated_at) >=0 && !(@stationery.user.role.to_s == "admin") %>
+<% if time_different(@stationery.updated_at) >= 2 && !(@stationery.user.role.to_s == "admin") %>
   <h2 style="color:red">This Itme should have been returned into the warehouse already</h2>
 <% end %>
 <% if (@stationery.user.id != current_user.id) || (@stationery.user.role.to_s == "admin" ) %>

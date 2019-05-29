@@ -2,9 +2,9 @@
 
 <% @users.each do |user| %>
   <ul>
-  	<li><%= user.id %></li>
-    <li><%= link_to user.name, user_path(user) %></li>
-    <li><%= user.email %></li>
-    <li><%= user.activity %></li>
+  	<li>User id:  <%= user.id %></li>
+    <li>User name:  <%= link_to user.name, user_path(user) %></li>
+    <li>User email:  <%= user.email %></li>
+    <li>Activity status:  <%= user.activity %></li>
   </ul>
 <% end %>

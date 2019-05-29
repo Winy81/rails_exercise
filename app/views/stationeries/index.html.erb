@@ -20,7 +20,7 @@
        <li><%= stationery.user.role%></li>
        <li><%= link_to stationery.user.name, user_path(stationery.user)  %></li>       
      </ul>
-     <% if time_different(stationery.updated_at) >= 0 && !(stationery.user.role.to_s == "admin") %>
+     <% if time_different(stationery.updated_at) >= 2 && !(stationery.user.role.to_s == "admin") %>
        <h4 style="color:red">This Itme should have been returned into the warehouse already</h4>
      <% end %>
      <hr>
