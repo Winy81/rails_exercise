@@ -54,7 +54,7 @@ class StationeriesController < ApplicationController
 	private
 
 	def stationery_params
-  	  params.require(:stationery).permit(:name,:product_code,:consumable,:availability,:user_id)
+  	  params.require(:stationery).permit(:name,:product_code,:consumable,:availability,:user_id,:cupboard)
   	end
 
 end
