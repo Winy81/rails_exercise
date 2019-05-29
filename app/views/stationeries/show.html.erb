@@ -3,7 +3,12 @@
 <p><%= @stationery.product_code %></p>
 <p><%= @stationery.consumable %></p>
 </br>
-<%= link_to "Edit statinery details", edit_stationery_path(@stationery) %></br>
+<% if (time_different(@stationery.updated_at) >=0) && !(@stationery.user.role == "admin" ) %>
+  <h2 style="color:red">This Itme should have been returned into the warehouse already</h2>
+<% end %>
+<% unless (@stationery.user.id == current_user.id) && !(@stationery.user.role == "admin" ) %>
+  <%= link_to "Edit statinery details", edit_stationery_path(@stationery) %></br>
+<% end %>
 <% if logged_in?(:admin) %>
   <%= link_to "Delete stationery", stationery_path(@stationery), method: :delete, data: {confirm: "Are you sure, you want to remove the item from the list"} %></br>
 <% end %>
