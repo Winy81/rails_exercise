@@ -5,9 +5,12 @@
   <li>Name of the product:  <%= @stationery.name %></li>
   <li>Consumable itme:  <%= @stationery.consumable %></li>
   <li>The product on <%= link_to @stationery.user.name, user_path(@stationery.user.id) %></li>
+  <% if logged_in?(:admin) && @stationery.user.role.to_s != "admin" %>
+    <%= link_to "Take this Item Back to Stock", edit_stationery_path(@stationery) %>
+  <% end %>
 </ul>
 
-<% if time_different(@stationery.updated_at) >= 0 && !(@stationery.user.role.to_s == "admin") && (@stationery.consumable.to_s == "false") %>
+<% if time_different(@stationery.updated_at) >= 2 && !(@stationery.user.role.to_s == "admin") && (@stationery.consumable.to_s == "false") %>
   <h5 style="color:red">This Itme should have been returned into the warehouse already</h5>
 <% end %>
 </br>
