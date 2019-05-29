@@ -1,11 +1,18 @@
 <h1>Statinery#show</h1>
-<h3><%= @stationery.name %></h3>
-<p><%= @stationery.product_code %></p>
-<p><%= @stationery.consumable %></p>
-</br>
-<% if time_different(@stationery.updated_at) >= 2 && !(@stationery.user.role.to_s == "admin") %>
-  <h2 style="color:red">This Itme should have been returned into the warehouse already</h2>
+<ul>
+  <li>Item id:  <%= @stationery.id %></li>
+  <li>Product code:  <%= @stationery.product_code %></li>
+  <li>Name of the product:  <%= @stationery.name %></li>
+  <li>Consumable itme:  <%= @stationery.consumable %></li>
+  <li>The product on <%= link_to @stationery.user.name, user_path(@stationery.user.id) %></li>
+</ul>
+
+<% if time_different(@stationery.updated_at) >= 0 && !(@stationery.user.role.to_s == "admin") && (@stationery.consumable.to_s == "false") %>
+  <h5 style="color:red">This Itme should have been returned into the warehouse already</h5>
 <% end %>
+</br>
+</br>
+</br>
 <% if (@stationery.user.id != current_user.id) || (@stationery.user.role.to_s == "admin" ) %>
   <%= link_to "Edit statinery details", edit_stationery_path(@stationery) %></br>
 <% end %>

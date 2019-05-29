@@ -8,14 +8,21 @@
   </ul>
 
 <h2>Itmes what belongs this user:</h2>
+
 <% @stationeries.each do |stationery| %>
   <ul>
     <% if stationery.user.id == @user.id %>
-    <li><%= stationery.id %></li>
-    <li><%= stationery.name %></li>
+    <li>Item id:  <%= stationery.id %></li>
+    <li>Product code:  <%= stationery.id %></li>
+    <li>Name of the product:  <%= link_to stationery.name, stationery_path(stationery) %></li>
+    <% if time_different(stationery.updated_at) >= 0 && !(stationery.user.role.to_s == "admin") && stationery.consumable.to_s == "false" %>
+    <li style="color:red">This Itme should have been returned already</li>
     <% end %>
+    <% end %>
+    </br>
   </ul>
 <% end %>
+
 </br>
 </br>
 </br>
@@ -23,5 +30,4 @@
   <%= link_to "Edit user", edit_user_path(@user) %></br>
   <%= link_to "Back For User List", users_path %></br>
   <%= link_to "Back For Item List", stationeries_path %></br>
-  <%= link_to "Back For Item List", stationeries_path %>
 
