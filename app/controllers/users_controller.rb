@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 	
+	before_action :set_user, only:[:show,:edit,:update,:destroy]
+
 	def index
 	  if logged_in?(:admin)
 		@users = User.all
@@ -10,7 +12,6 @@ class UsersController < ApplicationController
 
 	def show
 	  if logged_in?(:admin) || current_user
-	  	@user = User.find(params[:id])
 	  	@stationeries = Stationery.all
 		redirect_to stationeries_path, notice: "You are not allowed to check other user details" unless @user == current_user || logged_in?(:admin) 
 	  else
@@ -20,7 +21,6 @@ class UsersController < ApplicationController
 
 	def edit
 	  if logged_in?(:admin)
-	  	@user = User.find(params[:id])
 	  else
 		redirect_to stationeries_path, notice: "You are not allowed to editing Users"
 	  end
@@ -28,7 +28,6 @@ class UsersController < ApplicationController
 	end
 
 	def update
-	  @user = User.find(params[:id])
 	  if @user.update(user_params)
 	  	flash[:success] = "User has been updated"
 	  	redirect_to users_path
@@ -40,7 +39,6 @@ class UsersController < ApplicationController
 
 	def destroy
 	  if logged_in?(:admin)
-	  	@user = User.find(params[:id])
 	  	if @user.destroy
 	  	  flash[:success] = "Item has been destroyed"
 	  	  redirect_to users_path
@@ -50,6 +48,10 @@ class UsersController < ApplicationController
 
 
 	private
+
+	def set_user
+		@user = User.find(params[:id])
+	end
 
 	def user_params
 		params.require(:user).permit(:email,:name,:activity)
