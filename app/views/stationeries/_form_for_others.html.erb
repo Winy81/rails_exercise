@@ -1,0 +1,30 @@
+<%= form_for(@stationery) do |f| %>
+
+  <% if @stationery.errors.any? %>
+    <ul>
+      <% @stationery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+    <%= f.label :name%>
+    <%= f.text_field :name, :readonly => true%>
+
+    <%= f.label :product_code%>
+    <%= f.text_field :product_code, :readonly => true%>
+
+    <%= f.hidden_field :cupboard, :value => "Out" %>
+
+    <%= f.label "Item will be linked for user with id:"%>
+    <%= f.text_field :user_id, :value => current_user.id, :readonly => true%>
+
+    <%= f.hidden_field :availability, :value => '0' %>
+
+    <%= f.label :consumable%>
+    <%= f.check_box :consumable, {:disabled => true}%>
+
+    <%= f.submit "Take the item"%>
+
+<% end %>
+</br>

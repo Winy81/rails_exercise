@@ -1,0 +1,33 @@
+<%= form_for(@stationery) do |f| %>
+
+  <% if @stationery.errors.any? %>
+    <ul>
+      <% @stationery.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :product_code %>
+    <%= f.text_field :product_code %>
+
+    <%= f.label :cupboard%>
+    <%= f.text_field :cupboard, :value => 1%>
+
+    <%= f.label "Item will be returned for the stock"%>
+    <%= f.text_field :user_id, :value => current_user.id %>
+
+    <%= f.label :available %>
+    <%= f.check_box :availability, {checked: true} %>
+
+    <%= f.label :consumable %>
+    <%= f.check_box :consumable %>
+
+
+    <%= f.submit "Take the item"%>
+
+<% end %>
+</br>

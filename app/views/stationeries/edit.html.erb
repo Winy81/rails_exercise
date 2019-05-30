@@ -3,60 +3,15 @@
 <h2>Welcome:  <%= current_user.name %></h2>
 <h2>Your user id is:  <%= current_user.id %></h2>
 
-<%= form_for(@stationery) do |f| %>
+  <% unless logged_in?(:admin) %>
 
-	<% if @stationery.errors.any? %>
-		<ul>
-		  <% @stationery.errors.full_messages.each do |msg| %>
-		  	<li><%= msg %></li>
-		  <% end %>
-		</ul>
-	<% end %>
+  	<%= render 'form_for_others' %>
 
-<% unless logged_in?(:admin) %>
+  <% end %>
 
-	<%= f.label :name%>
-	<%= f.text_field :name, :readonly => true%>
+  <% if logged_in?(:admin) %>
 
-	<%= f.label :product_code%>
-	<%= f.text_field :product_code, :readonly => true%>
+  	<%= render 'form_for_admin' %>
 
-	<%= f.hidden_field :cupboard, :value => "Out" %>
-
-	<%= f.label "Item will be linked for user with id:"%>
-	<%= f.text_field :user_id, :value => current_user.id, :readonly => true%>
-
-  <%= f.hidden_field :availability, :value => '0' %>
-
-	<%= f.label :consumable%>
-	<%= f.check_box :consumable, {:disabled => true}%>
-
-<% end %>
-
-<% if logged_in?(:admin) %>
-
-	<%= f.label :name %>
-	<%= f.text_field :name %>
-
-	<%= f.label :product_code %>
-	<%= f.text_field :product_code %>
-
-	<%= f.label :cupboard%>
-	<%= f.text_field :cupboard, :value => 1%>
-
-	<%= f.label "Item will be returned for the stock"%>
-	<%= f.text_field :user_id, :value => current_user.id %>
-
-	<%= f.label :available %>
-  <%= f.check_box :availability, {checked: true} %>
-
-	<%= f.label :consumable %>
-	<%= f.check_box :consumable %>
-
-<% end %>
-
-	<%= f.submit "Take the item"%>
-
-<% end %>
-</br>
+  <% end %>
 <%= link_to "Back for index page", stationeries_path %>
