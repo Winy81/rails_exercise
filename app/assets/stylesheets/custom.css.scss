@@ -3,7 +3,9 @@
 
 ul,li{
   list-style: none;
-  display:inline;
+  -ms-flex-align: center!important;
+    align-items: center!important;
+    display: flex;
 }
 
 li{

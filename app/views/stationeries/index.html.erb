@@ -1,4 +1,6 @@
-<h1>Statinery#index</h1>
+<div class="container">
+      <div class="row">
+        <div class="col-md-12">
 
 <% unless current_user %>
   <h2>For the items, please <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> first</h2>
@@ -14,6 +16,7 @@
 
 <% @stationeries.each do |stationery| %>
  <% if logged_in?(:admin) %>
+  <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
     <ul>
        <li>Item Id:  <%= stationery.id %></li>
        <li>Location:  <%= stationery.cupboard %></li>
@@ -24,6 +27,7 @@
        <li>Belongs user with role:  <%= stationery.user.role%></li>
        <li>User name:  <%= link_to stationery.user.name, user_path(stationery.user) %></li>       
      </ul>
+ 
      <% if time_different(stationery.updated_at) >= 2 && !(stationery.user.role.to_s == "admin") && stationery.consumable == false %>
        <h4 style="color:red">This Itme should have been returned into the warehouse already</h4>
      <% end %>
@@ -37,7 +41,7 @@
 		   <li>Product code:  <%= stationery.product_code %></li>
        <li>Consumable:  <%= stationery.consumable  %></li>
        <% if current_user.activity == true %>
-         <li><%= link_to "Take the Item", edit_stationery_path(stationery) %></li>
+         <li><%= link_to "Take the Item", edit_stationery_path(stationery), class:"btn btn-primary btn-sm" %></li>
        <% else %>
          <p style="color:red">Your account has been blocked</p>
        <% end %>
@@ -45,4 +49,8 @@
      <hr>
    <% end %>
  <% end %>
+ </div>
 <% end %>
+</div>
+</div>
+</div>
