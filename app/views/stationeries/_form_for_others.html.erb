@@ -1,3 +1,4 @@
+
 <%= form_for(@stationery) do |f| %>
 
   <% if @stationery.errors.any? %>
@@ -24,7 +25,8 @@
     <%= f.label :consumable%>
     <%= f.check_box :consumable, {:disabled => true}%>
 
-    <%= f.submit "Take the item"%>
+    <%= f.submit "Take the item", class:"btn btn-primary btn-md" %>
 
 <% end %>
+</div>
 </br>
