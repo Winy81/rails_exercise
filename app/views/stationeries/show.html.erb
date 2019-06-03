@@ -1,26 +1,40 @@
-<h1>Statinery#show</h1>
-<ul>
-  <li>Item id:  <%= @stationery.id %></li>
-  <li>Location: <%= @stationery.cupboard %></li>
-  <li>Product code:  <%= @stationery.product_code %></li>
-  <li>Name of the product:  <%= @stationery.name %></li>
-  <li>Consumable itme:  <%= @stationery.consumable %></li>
-  <li>The product on <%= link_to @stationery.user.name, user_path(@stationery.user.id) %></li>
-  <% if logged_in?(:admin) && @stationery.user.role.to_s != "admin" %>
-    <%= link_to "Take this Item Back to Stock", edit_stationery_path(@stationery) %>
-  <% end %>
-</ul>
 
-<% if time_different(@stationery.updated_at) >= 2 && !(@stationery.user.role.to_s == "admin") && (@stationery.consumable.to_s == "false") %>
+<h1>Statinery#show</h1>
+
+<div class="row show-form-row">
+  <div class="col-md-1">
+  </div>
+  <div class="col-md-10">
+<ul>
+  <li class="col-md-2 text-muted">Item id:  <span style="color:black"><%= @stationery.id %></span></li>
+  <li class="col-md-2 text-muted">Location: <span style="color:black"><%= @stationery.cupboard %></span></li>
+  <li class="col-md-2 text-muted">Product code:  <span style="color:black"><%= @stationery.product_code %></span></li>
+  <li class="col-md-2 text-muted">Name of the product:  <span style="color:black"><%= @stationery.name %></span></li>
+  <li class="col-md-2 text-muted">Consumable:  <span style="color:black"><%= @stationery.consumable %></span></li>
+  <li class="col-md-2 text-muted">The product on: <%= link_to @stationery.user.name, user_path(@stationery.user.id) %></li>
+ </ul>
+
+ <% if time_different(@stationery.updated_at) >= 2 && !(@stationery.user.role.to_s == "admin") && (@stationery.consumable.to_s == "false") %>
   <h5 style="color:red">This Itme should have been returned into the warehouse already</h5>
 <% end %>
-</br>
-</br>
-</br>
+
+  <% if logged_in?(:admin) && @stationery.user.role.to_s != "admin" %>
+    <%= link_to "Take this Item Back to Stock", edit_stationery_path(@stationery), class:"btn btn-primary btn-md" %>
+  <% end %>
+
+
+
+
+<% if logged_in?(:admin) %>
+  <%= link_to "Delete stationery", stationery_path(@stationery), method: :delete, class:"btn btn-danger btn-md", data: {confirm: "Are you sure, you want to remove the item from the list"} %></br>
+<% end %>
+
+</div>
+</div>
+
+
 <% if (@stationery.user.id != current_user.id) || (@stationery.user.role.to_s == "admin" ) %>
   <%= link_to "Edit statinery details", edit_stationery_path(@stationery) %></br>
 <% end %>
-<% if logged_in?(:admin) %>
-  <%= link_to "Delete stationery", stationery_path(@stationery), method: :delete, data: {confirm: "Are you sure, you want to remove the item from the list"} %></br>
-<% end %>
+
 <%= link_to "Back for index page", stationeries_path %>

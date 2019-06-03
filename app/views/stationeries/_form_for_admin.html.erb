@@ -8,26 +8,44 @@
     </ul>
   <% end %>
 
+<div class="row edit-form-row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
     <%= f.label :name %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, class:"edit-form-group" %>
+    </div>
 
+    <div class="form-group">
     <%= f.label :product_code %>
-    <%= f.text_field :product_code %>
+    <%= f.text_field :product_code, class:"edit-form-group" %>
+    </div>
 
+    <div class="form-group">
     <%= f.label :cupboard%>
-    <%= f.text_field :cupboard, :value => 1%>
+    <%= f.text_field :cupboard, class:"edit-form-group", :value => 1%>
+    </div>
 
+    <div class="form-group">
     <%= f.label "Item will be returned for the stock"%>
-    <%= f.text_field :user_id, :value => current_user.id %>
+    <%= f.text_field :user_id, class:"edit-form-group", :value => current_user.id %>
+    </div>
 
+    <div class="form-group">
     <%= f.label :available %>
     <%= f.check_box :availability, {checked: true} %>
+    </div>
 
+    <div class="form-group">
     <%= f.label :consumable %>
     <%= f.check_box :consumable %>
+    </div>
 
-
-    <%= f.submit "Take the item"%>
+    <%= f.submit "Take the item", class:"btn btn-primary btn-md"%>
 
 <% end %>
-</br>
+</div>
+<div class="col-md-4">
+</div>
+</div>
