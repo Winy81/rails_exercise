@@ -5,22 +5,22 @@
   <div class="col-md-1">
   </div>
   <div class="col-md-10">
-<ul>
-  <li class="col-md-2 text-muted">Item id:  <span style="color:black"><%= @stationery.id %></span></li>
-  <li class="col-md-2 text-muted">Location: <span style="color:black"><%= @stationery.cupboard %></span></li>
-  <li class="col-md-2 text-muted">Product code:  <span style="color:black"><%= @stationery.product_code %></span></li>
-  <li class="col-md-2 text-muted">Name of the product:  <span style="color:black"><%= @stationery.name %></span></li>
-  <li class="col-md-2 text-muted">Consumable:  <span style="color:black"><%= @stationery.consumable %></span></li>
-  <li class="col-md-2 text-muted">The product on: <%= link_to @stationery.user.name, user_path(@stationery.user.id) %></li>
- </ul>
+    <ul>
+      <li class="col-md-2 text-muted">Item id:  <span style="color:black"><%= @stationery.id %></span></li>
+      <li class="col-md-2 text-muted">Location: <span style="color:black"><%= @stationery.cupboard %></span></li>
+      <li class="col-md-2 text-muted">Product code:  <span style="color:black"><%= @stationery.product_code %></span></li>
+      <li class="col-md-2 text-muted">Name of the product:  <span style="color:black"><%= @stationery.name %></span></li>
+      <li class="col-md-2 text-muted">Consumable:  <span style="color:black"><%= @stationery.consumable %></span></li>
+      <li class="col-md-2 text-muted">The product on: <%= link_to @stationery.user.name, user_path(@stationery.user.id) %></li>
+    </ul>
 
  <% if time_different(@stationery.updated_at) >= 2 && !(@stationery.user.role.to_s == "admin") && (@stationery.consumable.to_s == "false") %>
   <h5 style="color:red">This Itme should have been returned into the warehouse already</h5>
-<% end %>
+ <% end %>
 
-  <% if logged_in?(:admin) && @stationery.user.role.to_s != "admin" %>
-    <%= link_to "Take this Item Back to Stock", edit_stationery_path(@stationery), class:"btn btn-primary btn-md" %>
-  <% end %>
+ <% if logged_in?(:admin) && @stationery.user.role.to_s != "admin" %>
+  <%= link_to "Take this Item Back to Stock", edit_stationery_path(@stationery), class:"btn btn-primary btn-md" %>
+ <% end %>
 
 
 
