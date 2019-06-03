@@ -15,14 +15,14 @@
     <% @stationeries.each do |stationery| %>
       <% if logged_in?(:admin) %>
          <ul class="list-inline mx-auto justify-content-center">
-           <li>Item Id:  <%= stationery.id %></li>
-           <li>Location:  <%= stationery.cupboard %></li>
-           <li>Item name:  <%= link_to stationery.name, stationery_path(stationery) %></li>
-           <li>Product code:  <%= stationery.product_code %></li>
-           <li>Available:  <%= stationery.availability %></li>
-           <li>Belongs user with ID:  <%= stationery.user.id %></li>
-           <li>Belongs user with role:  <%= stationery.user.role%></li>
-           <li>User name:  <%= link_to stationery.user.name, user_path(stationery.user) %></li>       
+           <li class="col-md-2 text-muted">Item Id:  <span style="color:black"><%= stationery.id %></li></span>
+           <li class="col-md-2 text-muted">Location:  <span style="color:black"><%= stationery.cupboard %></li></span>
+           <li class="col-md-2 text-muted">Item name:  <span style="color:black"><%= link_to stationery.name, stationery_path(stationery) %></li></span>
+           <li class="col-md-2 text-muted">Product code:  <span style="color:black"><%= stationery.product_code %></li></span>
+           <li class="col-md-2 text-muted">Available:  <span style="color:black"><%= stationery.availability %></li></span>
+           <li class="col-md-2 text-muted">Belongs user with ID:  <span style="color:black"><%= stationery.user.id %></li></span>
+           <li class="col-md-2 text-muted">Belongs user with role:  <span style="color:black"><%= stationery.user.role%></li></span>
+           <li class="col-md-2 text-muted">User name:  <%= link_to stationery.user.name, user_path(stationery.user) %></li>       
           </ul>
          <% if time_different(stationery.updated_at) >= 2 && !(stationery.user.role.to_s == "admin") && stationery.consumable == false %>
            <h4 style="color:red">This Itme should have been returned into the warehouse already</h4>
