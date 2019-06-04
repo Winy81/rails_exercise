@@ -1,28 +1,36 @@
-<h1>User#edit</h1>
+<h1 style="padding-left: 25px">Edit the User's deatils</h1>
 
 <%= form_for(@user) do |f| %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+<div class="row edit-form-row">
+  <div class="col-md-2">
+  </div>
+  <div class="col-md-6">
+    <div class="form-group">
+      <span class="text-muted"><%= f.label :email %></span>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"edit-form-group" %>
   </div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="form-group">
+    <span class="text-muted"><%= f.label :name %></span>
+    <%= f.text_field :name, class:"edit-form-group" %>
   </div>
 
-  <div class="field">
-    <%= f.label :activity %><br />
+  <div class="form-group">
+    <span class="text-muted"><%= f.label :activity %></span>
     <%= f.check_box :activity %>
   </div>
 
-
-
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "User update" , class:"btn btn-primary btn-md" %>
   </div>
 <% end %>
 
+</div>
+</div>
 
-<%= link_to "Back", :back %>
+
+<%= link_to "Back for Users page", users_path, style:"font-size:125%;padding-left: 25px" %></br>
+<%= link_to "Back for Index page", stationeries_path, style:"font-size:125%;padding-left: 25px" %>
+
+
