@@ -31,12 +31,12 @@
     <% elsif logged_in?(:editor) %>  
       <% if stationery.availability == true %>
 	      <ul class="list-inline text-center justify-content-center">
-		      <li>Item Id:  <%= stationery.id %></li>
-       	      <li>Location: <%= stationery.cupboard %></li>
-		      <li>Item name:  <%= stationery.name %></li>
-		      <li>Product code:  <%= stationery.product_code %></li>
-              <li>Consumable:  <%= stationery.consumable  %></li>
-             <% if current_user.activity == true %>
+		      <li class="col-md-2 text-muted">Item Id:  <span style="color:black"><%= stationery.id %></li></span>
+       	      <li class="col-md-2 text-muted">Location: <span style="color:black"><%= stationery.cupboard %></li></span>
+		      <li class="col-md-2 text-muted">Item name:  <span style="color:black"><%= stationery.name %></li></span>
+		      <li class="col-md-2 text-muted">Product code:  <span style="color:black"><%= stationery.product_code %></li></span>
+              <li class="col-md-2 text-muted">Consumable:  <span style="color:black"><%= stationery.consumable  %></li>
+             <% if current_user.activity == true %></span>
               <li><%= link_to "Take the Item", edit_stationery_path(stationery), class:"btn btn-primary btn-sm" %></li>
              <% else %>
                <p style="color:red">Your account has been blocked</p>
