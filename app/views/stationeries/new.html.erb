@@ -1,4 +1,14 @@
-<h1>Statinery#new</h1>
+<h1 style="padding-left: 25px">Create a new Stationery Item</h1>
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-11 content-holder">
+
+<h3 class="text-muted">Welcome:  <span style="color:black"><%= current_user.name %></span></h3>
+<h3 class="text-muted">Your user id is:  <span style="color:black"><%= current_user.id %></span></h3>
+
+
 
 <%= form_for(@stationery) do |f| %>
 	
@@ -9,24 +19,44 @@
 		  <% end %>
 		</ul>
 	<% end %>
-	
-	<%= f.label :name%>
-	<%= f.text_field :name%>
 
-	<%= f.label :product_code%>
-	<%= f.text_field :product_code%>
+<div class="row edit-form-row">
+  <div class="col-md-2">
+  </div>
 
-	<%= f.label :cupboard%>
-	<%= f.text_field :cupboard%>
+  <div class="col-md-10">
+    <div class="form-group">	
+	 <span class="text-muted"><%= f.label :name%></span>
+	 <%= f.text_field :name, class:"edit-form-group"%>
+	</div>
 
-	<%= f.label :available%>
-	<%= f.check_box :availability, {checked: true}%>
+    <div class="form-group">	
+	 <span class="text-muted"><%= f.label :product_code%></span>
+	 <%= f.text_field :product_code, class:"edit-form-group"%>
+	</div>
 
-	<%= f.label :consumable%>
-	<%= f.check_box :consumable%>
+    <div class="form-group">
+	 <span class="text-muted"><%= f.label :cupboard%></span>
+	 <%= f.text_field :cupboard, class:"edit-form-group"%>
+	</div>
 
-	<%= f.submit %>
+    <div class="form-group">
+	 <span class="text-muted"><%= f.label :available%></span>
+	 <%= f.check_box :availability, {checked: true}, class:"edit-form-group"%>
+	</div>
+
+    <div class="form-group">
+	 <span class="text-muted"><%= f.label :consumable%></span>
+	 <%= f.check_box :consumable, class:"edit-form-group"%>
+  </div>
+
+
+	<%= f.submit "Create Item", class:"btn btn-success btn-md" %>
 
 <% end %>
+</div>
+
+</div>
 </br>
-<%= link_to "Back for index page", stationeries_path %>
+<%= link_to "Back for index page", stationeries_path, style:"font-size:125%" %>
+</div>
