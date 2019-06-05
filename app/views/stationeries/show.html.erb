@@ -1,5 +1,5 @@
 
-<h1 style="padding-left: 25px">Stationery details</h1>
+<h1 class="content-holder-title-menu" style="padding-left: 25px">Stationery details</h1>
 
 <div class="col-md-1">
 </div>
@@ -41,7 +41,7 @@
 <div class="col-md-1">
 </div>
 
-<div class="col-md-10">
+<div class="col-md-2 content-holder-bottom-menu">
 
 	<% if (@stationery.user.id != current_user.id) || (@stationery.user.role.to_s == "admin" ) %>
   	  <%= link_to "Edit statinery details", edit_stationery_path(@stationery), style:"font-size:125%;padding-left: 25px" %></br>
