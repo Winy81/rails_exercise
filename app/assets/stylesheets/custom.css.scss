@@ -1,11 +1,16 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+body{
+  background-color:#eeeeee;
+}
+
 ul,li{
   list-style: none;
   -ms-flex-align: center!important;
     align-items: center!important;
     display: flex;
+    background-color:white;
 }
 
 li{
@@ -38,6 +43,14 @@ h1{
 }
 
 .content-holder{
-	padding-bottom:60px;
-	padding-top:30px;
+  margin-bottom:50px;
+  margin-top:30px;
+  background-color:white;
+  border-radius:8px;
+  border:5px double #eeeeee;
+}
+
+.staionery_container{
+  background-color:white;
+  border-radius:5px;
 }

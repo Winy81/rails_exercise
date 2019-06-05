@@ -4,7 +4,7 @@
 <div class="col-md-1">
 </div>
 
-<div class="col-md-11 content-holder">
+<div class="col-md-10 content-holder">
 
 <div class="row show-form-row">
   <div class="col-md-11">
@@ -35,7 +35,13 @@
    </div>
 </div>
 
+
 </div>
+
+<div class="col-md-1">
+</div>
+
+<div class="col-md-10">
 
 	<% if (@stationery.user.id != current_user.id) || (@stationery.user.role.to_s == "admin" ) %>
   	  <%= link_to "Edit statinery details", edit_stationery_path(@stationery), style:"font-size:125%;padding-left: 25px" %></br>
@@ -44,3 +50,4 @@
 
     <%= link_to "Back for index page", stationeries_path, style:"font-size:125%;padding-left: 25px" %>
 
+</div>
