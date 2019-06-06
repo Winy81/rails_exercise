@@ -3,15 +3,15 @@
 <div class="col-md-1"></div>
 
 <div class="container content-holder-user">
-<% @users.each do |user| %>
-  <ul class="list-inline mx-auto justify-content-center">
-  	<li class="col-md-3 text-muted">User id:  <span style="color:black"><%= user.id %></li></span>
-    <li class="col-md-3 text-muted">User name:  <span style="color:black"><%= link_to user.name, user_path(user) %></li></span>
-    <li class="col-md-3 text-muted">User email:  <span style="color:black"><%= user.email %></li></span>
-    <li class="col-md-3 text-muted">Activity status:  <span style="color:black"><%= user.activity %></li></span>
-  </ul>
-  <hr>
-<% end %>
+ <% @users.each do |user| %>
+   <ul class="list-inline mx-auto justify-content-center">
+  	 <li class="col-md-3 text-muted">User id:  <span style="color:black"><%= user.id %></li></span>
+     <li class="col-md-3 text-muted">User name:  <span style="color:black"><%= link_to user.name, user_path(user) %></li></span>
+     <li class="col-md-3 text-muted">User email:  <span style="color:black"><%= user.email %></li></span>
+     <li class="col-md-3 text-muted">Activity status:  <span style="color:black"><%= user.activity %></li></span>
+   </ul>
+   <hr>
+ <% end %>
 <div class="col-md-1"></div>
 </div>
 

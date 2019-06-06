@@ -1,9 +1,9 @@
 <h1 class="content-holder-title-menu" style="padding-left: 25px">Edit the details of Stationery</h1>
-
+<div class="container">
 <div class="col-md-1">
 </div>
 
-<div class="col-md-11 content-holder">
+<div class="col-md-10 content-holder">
 
 	<h3 class="text-muted">Welcome:  <span style="color:black"><%= current_user.name %></span></h3>
 	<h3 class="text-muted">Your user id is:  <span style="color:black"><%= current_user.id %></span></h3>
@@ -22,7 +22,9 @@
 
 
 </div>
-
+<div class="col-md-1">
+</div>
+</div>
 <div class="col-md-2 content-holder-bottom-menu">
 	<%= link_to "Back for index page", stationeries_path, style:"font-size:125%;padding-left: 35px"  %>
 </div>
