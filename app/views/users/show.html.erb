@@ -15,28 +15,35 @@
 
 <h2 class="content-holder-title-menu" style="padding-left: 25px">Items what belongs this user:</h2>
 
-<% @stationeries.each do |stationery| %>
-  <ul>
-    <% if stationery.user.id == @user.id %>
-      <li>Item id:  <%= stationery.id %></li>
-      <li>Product code:  <%= stationery.id %></li>
-      <li>Name of the product:  <%= link_to stationery.name, stationery_path(stationery) %></li>
-      <li>Consumable:  <%= stationery.consumable %></li>
-      <% if time_different(stationery.updated_at) >= 2 && !(stationery.user.role.to_s == "admin") && stationery.consumable.to_s == "false" %>
-      <li style="color:red">This Itme should have been returned already</li>
-      <% end %>
-    <% end %>
-  </ul>
-  </br>
-<% end %>
+<div class="container">
 
-</br>
-</br>
-</br>
+  <div class="content-holder-user">
+   <% @stationeries.each do |stationery| %>
+     <ul class="list-inline mx-auto justify-content-center">
+       <% if stationery.user.id == @user.id %>
+         <li class="col-md-2 text-muted">Item id:  <span style="color:black"><%= stationery.id %></li></span>
+         <li class="col-md-2 text-muted">Product code:  <span style="color:black"><%= stationery.id %></li></span>
+         <li class="col-md-2 text-muted">Name of the product:  <span style="color:black"><%= link_to stationery.name, stationery_path(stationery) %></li></span>
+         <li class="col-md-2 text-muted">Consumable:  <span style="color:black"><%= stationery.consumable %></li></span>
+        
+         <% if time_different(stationery.updated_at) >= 2 && !(stationery.user.role.to_s == "admin") && stationery.consumable.to_s == "false" %>
+            <li class="col-md-2 text-muted" style="color: red">
+              This Item should have been returned already
+            </li>
+         <% end %> 
+       <% end %>
+     </ul>
+   <% end %>
+  </div>
+</div>
 
-<% if logged_in?(:admin) %>
-  <%= link_to "Edit user", edit_user_path(@user) %></br>
-  <%= link_to "Back For User List", users_path %></br>
-<% end %>
-  <%= link_to "Back For Item List", stationeries_path %></br>
 
+
+
+<div class="col-md-2 content-holder-bottom-menu">
+  <% if logged_in?(:admin) %>
+    <%= link_to "Edit User", edit_user_path(@user), style:"font-size:125%;padding-left: 35px" %></br>
+    <%= link_to "Back For User List", users_path, style:"font-size:125%;padding-left: 35px" %></br>
+  <% end %>
+    <%= link_to "Back For Item List", stationeries_path, style:"font-size:125%;padding-left: 35px" %></br>
+</div>
