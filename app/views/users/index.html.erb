@@ -1,13 +1,22 @@
-<h1>User#index</h1>
+<h1 class="content-holder-title-menu" style="padding-left: 25px">List of Users</h1>
 
+<div class="col-md-1"></div>
+
+<div class="container content-holder-user">
 <% @users.each do |user| %>
-  <ul>
-  	<li>User id:  <%= user.id %></li>
-    <li>User name:  <%= link_to user.name, user_path(user) %></li>
-    <li>User email:  <%= user.email %></li>
-    <li>Activity status:  <%= user.activity %></li>
+  <ul class="list-inline mx-auto justify-content-center">
+  	<li class="col-md-3 text-muted">User id:  <span style="color:black"><%= user.id %></li></span>
+    <li class="col-md-3 text-muted">User name:  <span style="color:black"><%= link_to user.name, user_path(user) %></li></span>
+    <li class="col-md-3 text-muted">User email:  <span style="color:black"><%= user.email %></li></span>
+    <li class="col-md-3 text-muted">Activity status:  <span style="color:black"><%= user.activity %></li></span>
   </ul>
   <hr>
 <% end %>
+<div class="col-md-1"></div>
+</div>
 
-<%= link_to "Back for index page", stationeries_path %>
+
+
+<div class="col-md-2 content-holder-bottom-menu">
+<%= link_to "Back for index page", stationeries_path, style:"font-size:125%;padding-left: 35px" %>
+</div>
