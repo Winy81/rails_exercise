@@ -1,13 +1,19 @@
-<h1>User#show</h1>
+<h1 class="content-holder-title-menu" style="padding-left: 25px">Details of User: <%= @user.name %></h1>
 
-  <ul>
-    <li>User id:  <%= @user.id %></li>
-    <li>User name:  <%= @user.name %></li>
-    <li>User email:  <%= @user.email %></li>
-    <li>Activity status:  <%= @user.activity %></li>
-  </ul>
+<div class="container">
+  <div class="col-md-12 content-holder">
+   <div class="row show-form-row">
+    <ul>
+      <li class="col-md-3 text-muted">User id:  <span style="color:black"><%= @user.id %></li></span>
+      <li class="col-md-3 text-muted">User name:  <span style="color:black"><%= @user.name %></li></span>
+      <li class="col-md-3 text-muted">User email:  <span style="color:black"><%= @user.email %></li></span>
+      <li class="col-md-3 text-muted">Activity status:  <span style="color:black"><%= @user.activity %></li></span>
+    </ul>
+   </div>
+  </div>
+</div>
 
-<h2>Itmes what belongs this user:</h2>
+<h2 class="content-holder-title-menu" style="padding-left: 25px">Items what belongs this user:</h2>
 
 <% @stationeries.each do |stationery| %>
   <ul>
