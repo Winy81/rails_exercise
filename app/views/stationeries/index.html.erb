@@ -1,15 +1,20 @@
-<div class="container">
+<h1 class="content-holder-title-menu" style="padding-left: 25px">List of the Items in the system</h1>
+
+
+<% if logged_in?(:admin) %>
+      <%= link_to "Put new Stationery into the list" , new_stationery_path, class:"btn btn-success btn-lg",  style:"margin-left: 10%;margin-bottom:25px;" %>
+<% end %>
+
+
+
+
+<div class="container content-holder">
    
 	<% unless current_user %>
   		<h3>For the items, please <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> first</h3>
 	<% end %>
 
-	<% if logged_in?(:admin) %>
-  		<%= link_to "Put new Stationery into the list" , new_stationery_path, class:"btn btn-success btn-lg" %>
-	<% end %>
-	</br>
-	</br>
-	</br>
+</br>
 
   <div class="staionery_container">
     <% @stationeries.each do |stationery| %>
