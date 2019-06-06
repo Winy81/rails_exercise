@@ -11,7 +11,7 @@
 <div class="container content-holder">
    
 	<% unless current_user %>
-  		<h3>For the items, please <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> first</h3>
+  		<h3 style="text-align: center;">For the items borrowing - site using, please <%= link_to "Sign up", new_user_registration_path %> or <%= link_to "Sign in", new_user_session_path %> on this Site first!</h3>
 	<% end %>
 
 </br>
@@ -30,7 +30,7 @@
            <li class="col-md-2 text-muted">User name:  <%= link_to stationery.user.name, user_path(stationery.user) %></li>       
           </ul>
          <% if time_different(stationery.updated_at) >= 2 && !(stationery.user.role.to_s == "admin") && stationery.consumable == false %>
-           <h4 style="color:red">This Itme should have been returned into the warehouse already</h4>
+           <h4 style="color:red">This Item should have been returned into the warehouse already</h4>
          <% end %>
          <hr>
     <% elsif logged_in?(:editor) %>  
