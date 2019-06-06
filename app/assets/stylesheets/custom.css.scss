@@ -5,6 +5,16 @@ body{
   background-color:#eeeeee;
 }
 
+.messages{
+  font-size:150%;
+  color:white;
+  background-color:#fad1d1;
+  border-radius:8px;
+  border:5px double #eeeeee;
+  padding:10px;
+  padding-left:10%;
+}
+
 ul,li{
   list-style: none;
   -ms-flex-align: center!important;
