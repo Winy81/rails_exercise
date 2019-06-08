@@ -2,6 +2,10 @@ class User < ApplicationRecord
   
   has_many :stationery, dependent: :destroy
 
+  validates_presence_of :name, message: "Name can't be blank"
+  validates_presence_of :password, message: "Name can't be blank"
+  validates_presence_of :password, length: { minimum: 6 }, message: "Password has to be minimum 6 character long"
+
   ############################################################################################
   ## PeterGate Roles                                                                        ##
   ## The :user role is added by default and shouldn't be included in this list.             ##
