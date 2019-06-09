@@ -10,7 +10,7 @@
 
 
 
-<%= form_for(@stationery) do |f| %>
+  <%= form_for(@stationery) do |f| %>
 	
 	<% if @stationery.errors.any? %>
 		<ul>
@@ -63,3 +63,5 @@
 <div class="col-md-2 content-holder-bottom-menu">
 	<%= link_to "Back for index page", stationeries_path, style:"font-size:125%;padding-left: 35px" %>
 </div>
+
+
