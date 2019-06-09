@@ -12,7 +12,8 @@ class UsersController < ApplicationController
 
 	def show
 	  if logged_in?(:admin) || current_user
-	  	@stationeries = Stationery.all
+	  	@user_selected = User.find(params[:id]).id
+	  	@stationeries = Stationery.where("user_id=#{@user_selected}")
 		redirect_to stationeries_path, notice: "You are not allowed to check other user details" unless @user == current_user || logged_in?(:admin) 
 	  else
 		redirect_to stationeries_path, notice: "You are not authiruzed for checking Users"
