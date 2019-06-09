@@ -1,4 +1,4 @@
-
+<div class="container">
 <h1 class="content-holder-title-menu" style="padding-left: 25px">Stationery details</h1>
 
 <div class="col-md-1">
@@ -6,39 +6,39 @@
 
 <div class="col-md-10 content-holder">
 
-<div class="row show-form-row">
-  <div class="col-md-11">
-    <ul>
-      <li class="col-md-2 text-muted">Item id:  <span style="color:black"><%= @stationery.id %></span></li>
-      <li class="col-md-2 text-muted">Location: <span style="color:black"><%= @stationery.cupboard %></span></li>
-      <li class="col-md-2 text-muted">Product code:  <span style="color:black"><%= @stationery.product_code %></span></li>
-      <li class="col-md-2 text-muted">Name of the product:  <span style="color:black"><%= @stationery.name %></span></li>
-      <li class="col-md-2 text-muted">Consumable:  <span style="color:black"><%= @stationery.consumable %></span></li>
-      <li class="col-md-2 text-muted">The product on: <%= link_to @stationery.user.name, user_path(@stationery.user.id) %></li>
-    </ul>
+     <div class="row show-form-row">
+       <div class="col-md-12">
+         <ul>
+           <li class="col-md-2 text-muted">Item id:  <span style="color:black"><%= @stationery.id %></span></li>
+           <li class="col-md-2 text-muted">Location: <span style="color:black"><%= @stationery.cupboard %></span></li>
+           <li class="col-md-2 text-muted">Product code:  <span style="color:black"><%= @stationery.product_code %></span></li>
+           <li class="col-md-2 text-muted">Name of the product:  <span style="color:black"><%= @stationery.name %></span></li>
+           <li class="col-md-2 text-muted">Consumable:  <span style="color:black"><%= @stationery.consumable %></span></li>
+           <li class="col-md-2 text-muted">The product on: <%= link_to @stationery.user.name, user_path(@stationery.user.id) %></li>
+         </ul>
 
- 	<% if time_different(@stationery.updated_at) >= 2 && !(@stationery.user.role.to_s == "admin") && (@stationery.consumable.to_s == "false") %>
- 	  <h5 style="color:red">This Itme should have been returned into the warehouse already</h5>
- 	<% end %>
+ 	          <% if time_different(@stationery.updated_at) >= 2 && !(@stationery.user.role.to_s == "admin") && (@stationery.consumable.to_s == "false") %>
+ 	            <h5 style="color:red">This Itme should have been returned into the warehouse already</h5>
+ 	          <% end %>
 
- 	<% if logged_in?(:admin) && @stationery.user.role.to_s != "admin" %>
-  	  <%= link_to "Take this Item Back to Stock", edit_stationery_path(@stationery), class:"btn btn-primary btn-md" %>
- 	<% end %>
-
-
+ 	          <% if logged_in?(:admin) && @stationery.user.role.to_s != "admin" %>
+  	           <%= link_to "Take this Item Back to Stock", edit_stationery_path(@stationery), class:"btn btn-primary btn-md" %>
+ 	          <% end %>
 
 
-	<% if logged_in?(:admin) %>
-  	  <%= link_to "Delete stationery", stationery_path(@stationery), method: :delete, class:"btn btn-danger btn-md", data: {confirm: "Are you sure, you want to remove the item from the list"} %></br>
-    <% end %>
 
-   </div>
-</div>
 
+	          <% if logged_in?(:admin) %>
+  	          <%= link_to "Delete stationery", stationery_path(@stationery), method: :delete, class:"btn btn-danger btn-md", data: {confirm: "Are you sure, you want to remove the item from the list"} %></br>
+            <% end %>
+
+         </div>
+      </div>
 
 </div>
 
 <div class="col-md-1">
+</div>
 </div>
 
 <div class="col-md-2 content-holder-bottom-menu">
@@ -47,7 +47,10 @@
   	  <%= link_to "Edit statinery details", edit_stationery_path(@stationery), style:"font-size:125%;padding-left: 25px" %></br>
 	<% end %>
 
-
-    <%= link_to "Back for index page", stationeries_path, style:"font-size:125%;padding-left: 25px" %>
+  <%= link_to "Back for index page", stationeries_path, style:"font-size:125%;padding-left: 25px" %>
 
 </div>
+
+
+
+
