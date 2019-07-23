@@ -1,4 +1,8 @@
-<h1 class="content-holder-title-menu" style="padding-left: 25px">List of the Items in the system</h1>
+<% unless current_user %>
+  <h1 class="content-holder-title-menu" style="padding-left: 25px">Rails application</h1>
+<% else %>
+  <h1 class="content-holder-title-menu" style="padding-left: 25px">List of the Items in the system</h1>
+<% end %>
 
 
 <% if logged_in?(:admin) %>
